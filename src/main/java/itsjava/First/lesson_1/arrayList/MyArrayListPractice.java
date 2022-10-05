@@ -46,8 +46,8 @@ public class MyArrayListPractice {
 //        list.remove(1);
 //        System.out.println(list);
 //
-//        list.remove(0);
-//        System.out.println(list);
+        list.remove(0);
+        System.out.println(list);
 //        list.remove("elem1");
 //        list.remove("elem3");
 //        System.out.println(list);

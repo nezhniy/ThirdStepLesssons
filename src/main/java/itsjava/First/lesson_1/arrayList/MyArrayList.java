@@ -105,7 +105,7 @@ public class MyArrayList {
 
     private void checkIndex(int index) {
         if (!isCoorectIndex(index)){
-            throw new ArrayIndexOutOfBoundsException("Некорректный индекс");
+            throw new ArrayIndexOutOfBoundsException("Некорректный индекс!");
         }
     }
 
