@@ -1,7 +1,7 @@
-package itsjava.First.lesson_1.arrayList;
+package itsjava.first.lesson_1.arrayList;
 
 public class MyArrayList {
-    public static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
     private int realSize;
     private Object[] array;
 
@@ -144,5 +144,9 @@ public class MyArrayList {
         }
         stringBuilder.append('}');
         return stringBuilder.toString();
+    }
+
+    public Object[] getArray(){
+        return array;
     }
 }

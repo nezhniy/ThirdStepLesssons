@@ -1,4 +1,4 @@
-package itsjava.First.lesson_1.arrayList;
+package itsjava.first.lesson_1.arrayList;
 
 public class MyArrayListPractice {
     public static void main(String[] args) {
@@ -62,7 +62,8 @@ public class MyArrayListPractice {
         list.set(0, "asdf");
         System.out.println(list);
 
-        //в чате проигнорировали, в интернете не нашел, почему мой код не работает, нашел как такой же код пишут на с++ и все работает
+        //в чате проигнорировали, в интернете не нашел, почему мой код не работает,
+                                //нашел, как такой же код пишут на с++ и на с++ все работает
         list.add(2, "ooo");
         System.out.println(list);
 
