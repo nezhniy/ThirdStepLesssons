@@ -34,15 +34,14 @@ public class MyArrayListTest {
         Assertions.assertEquals(ZERO, list.get(0));
     }
 
-    //см комментарий в классе MyArrayListPractice
-//    @DisplayName("добавлять элемент по индексу")
-//    @Test
-//    public void shouldHaveCorrectAddByIndex(){
-//        MyArrayList list = new MyArrayList();
-//        list.add(1, ONE);
-//
-//        Assertions.assertEquals(ONE, list.get(1));
-//    }
+    @DisplayName("добавлять элемент по индексу")
+    @Test
+    public void shouldHaveCorrectAddByIndex(){
+        MyArrayList list = new MyArrayList();
+        list.add(1, ONE);
+
+        Assertions.assertEquals(ONE, list.get(1));
+    }
 
     @DisplayName("проверять наличие элемента")
     @Test

@@ -42,6 +42,10 @@ public class MyArrayListPractice {
         list.add("poka");
         list.add("poka");
         list.add("poka");
+        list.add("poka");
+        list.add("poka");
+        list.add("poka");
+        list.add("poka");
 
 //        list.remove(1);
 //        System.out.println(list);
@@ -62,8 +66,6 @@ public class MyArrayListPractice {
         list.set(0, "asdf");
         System.out.println(list);
 
-        //в чате проигнорировали, в интернете не нашел, почему мой код не работает,
-                                //нашел, как такой же код пишут на с++ и на с++ все работает
         list.add(2, "ooo");
         System.out.println(list);
 
