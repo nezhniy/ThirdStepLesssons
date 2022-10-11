@@ -85,6 +85,7 @@ public class MyLinkedList {
             curNode.setNext(null);
         }
         head = null;
+        realSize = 0;
     }
 
     public Object get(int index) {
