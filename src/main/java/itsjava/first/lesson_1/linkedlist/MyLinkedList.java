@@ -9,7 +9,7 @@ public class MyLinkedList {
     }
 
     public boolean isEmpty() {
-        if (head.getValue() == null) {
+        if (head == null) {
             return true;
         } else {
             return false;
@@ -17,12 +17,12 @@ public class MyLinkedList {
     }
 
     public boolean contains(Object o) {
+        if (head.getValue().equals(o)) return true;
         Node curNode = head;
-        while (curNode.getNext() != null) {
+        while ((curNode = curNode.getNext()) != null) {
             if (curNode.getValue().equals(o)) {
                 return true;
             }
-            curNode = curNode.getNext();
         }
         return false;
     }
@@ -45,7 +45,38 @@ public class MyLinkedList {
     }
 
     public boolean remove(Object o) {
-        return false;
+        //если список пустой нечего удалять
+        if (head == null) return false;
+        //если первое звено содержит удаляемый объект
+        if (head.getValue().equals(o)){
+            //присваиваем первому звену значение второго
+            head = head.getNext();
+            return true;
+        }
+        //если список из одного элемента
+        if (head.getNext() == null) return false;
+        //создаем 2 переменные для перебора, prevNode будет следовать за curNode с отставанием в 1 звено
+        // каждому присваиваем head, чтобы идти с начала списка
+        Node curNode = head;
+        Node prevNode = head;
+        //пока следующее за curNode звено не null проверяем каждое звено на факт наличия в значении нужного объекта
+        while ((curNode = curNode.getNext()) != null){
+            //нашли звено - вышли из цикла
+            if (curNode.getValue().equals(o)){
+                break;
+            }
+            //пока не нашли совпадение, подтягиваем prevNode вслед за curNode, таким образом, чтобы prevNode указывал на
+            // предшествующее curNode звено
+            prevNode = prevNode.getNext();
+        }
+        //если мы так и не нашли элемент, добежав до конца списка, возвращаем false
+        if (curNode == null) return false;
+        //мы нашли элемент и меняем ссылку prevNode на следующее за curNode звено (минуя удаляемое звено)
+        prevNode.setNext(curNode.getNext());
+        //а у удаляемого звена меняем ссылку на null (на это звено ничто не ссылается и само звено ни на что не ссылается)
+        curNode.setNext(null);
+        //тут почему-то вне зависимости от возвращаемого метод исправно работает
+        return true;
     }
 
     public void clear() {
@@ -55,6 +86,7 @@ public class MyLinkedList {
 //        }
 //        curNode.setValue(null);
         head = null;
+        realSize = 0;
     }
 
     public Object get(int index) {
@@ -129,6 +161,7 @@ public class MyLinkedList {
             // чтобы в момент нахождения звена по индексу и выхода из цикла, остаться на 1 звено меньше первой переменной
             prevNode = prevNode.getNext();
         }
+        if (curNode == null) return null;
         //создаем новую переменную, куда кладем значение первого звена, найденного выше (я понимаю, что все не просто так, но зачем
         // создавать эту самую переменную я не понимаю, почему нельзя работать с curNode?)
         Object resValue = curNode.getValue();
@@ -160,11 +193,30 @@ public class MyLinkedList {
     }
 
     public int indexOf(Object o) {
-        return 0;
+        if (head.getValue().equals(o)) return 0;
+        int count = 0;
+        Node curNode = head;
+        while ((curNode = curNode.getNext()) != null){
+            count++;
+            if (curNode.getValue().equals(o)){
+                return count;
+            }
+        }
+        return -1;
     }
 
     public int lastIndexOf(Object o) {
-        return 0;
+        if (head.getValue().equals(o)) return 0;
+        int count = 0;
+        int position = 0;
+        Node curNode = head;
+        while ((curNode = curNode.getNext()) != null){
+            count++;
+            if (curNode.getValue().equals(o)){
+                position = count;
+            }
+        }
+        return position;
     }
 
     @Override
@@ -172,5 +224,18 @@ public class MyLinkedList {
         return "MyLinkedList{" +
                 "head=" + head +
                 '}';
+    }
+
+    public Object getValueOfElem(int index){
+        if (index == 0) return head.getValue();
+        Node curNode = head;
+        int count = 0;
+        while ((curNode = curNode.getNext()) != null){
+            count++;
+            if (count == index){
+                return curNode.getValue();
+            }
+        }
+        return -1;
     }
 }
