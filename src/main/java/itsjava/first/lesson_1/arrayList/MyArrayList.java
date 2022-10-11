@@ -80,7 +80,7 @@ public class MyArrayList {
     }
 
     public void add(int index, Object element) {
-        if (realSize <= array.length){
+        if (realSize == array.length){
             Object[] resArray = new Object[array.length * 3/2 + 1];
             resArray[index] = element;
             for (int i = 0; i < index; i++) {
@@ -89,9 +89,14 @@ public class MyArrayList {
             for (int i = index; i < array.length; i++) {
                 resArray[i + 1] = array[i];
             }
-            realSize++;
             array = resArray;
+        } else {
+            for (int i = index; i < array.length; i++) {
+                array[i] = array[i - 1];
+            }
+            array[index] = element;
         }
+        realSize++;
     }
 
     public Object remove(int index) {
