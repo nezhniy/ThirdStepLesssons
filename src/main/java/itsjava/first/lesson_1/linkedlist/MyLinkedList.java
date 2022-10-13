@@ -81,8 +81,10 @@ public class MyLinkedList {
 
     public void clear() {
         Node curNode = head;
+        Node prevNode = head;
         while ((curNode = curNode.getNext()) != null){
-            curNode.setNext(null);
+            prevNode.setNext(null);
+            prevNode = curNode;
         }
         head = null;
         realSize = 0;
